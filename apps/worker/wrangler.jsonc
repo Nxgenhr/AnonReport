@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "anonreport-worker",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "observability": {
+    "enabled": true
+  },
+  "dev": {
+    // apps/web proxies /api here in development.
+    "port": 8787
+  }
+}
