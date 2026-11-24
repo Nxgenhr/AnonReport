@@ -1,15 +1,169 @@
 :root {
-  font-family: system-ui, sans-serif;
-  line-height: 1.5;
-  color-scheme: light dark;
+  --navy: #0e2841;
+  --cream: #f7f1ea;
+  --gold: #dabf84;
+  --mist: #d9dee6;
 }
 
 body {
   margin: 0;
+  background: var(--navy);
+  color: var(--cream);
+  font-family: 'Outfit Variable', system-ui, sans-serif;
 }
 
-main {
-  max-width: 40rem;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+.page {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+/* Ribbon artwork, anchored to the right edge */
+.art {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(100%, 1100px);
+  height: 100%;
+}
+
+/* On tall, wide screens the artwork outgrows its 1100px box; let it spill
+   left instead of being cut off with a hard edge. */
+@media (min-width: 761px) {
+  .art {
+    overflow: visible;
+  }
+}
+
+/* Fades the artwork out behind the text */
+.veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    var(--navy) 0%,
+    rgb(14 40 65 / 0.92) 32%,
+    rgb(14 40 65 / 0.35) 58%,
+    rgb(14 40 65 / 0) 75%
+  );
+}
+
+.content {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  padding: clamp(24px, 3.5vw, 44px) clamp(24px, 5vw, 72px);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+}
+
+.logo svg {
+  width: 1.6em;
+  height: 1.6em;
+}
+
+.gold {
+  color: var(--gold);
+}
+
+.mid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 560px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+
+h1 {
+  margin: 0;
+  font-weight: 600;
+  font-size: clamp(38px, 5.4vw, 76px);
+  line-height: 1.04;
+  letter-spacing: -1.2px;
+}
+
+.lede {
+  margin: 0;
+  font-size: clamp(17px, 1.4vw, 19px);
+  line-height: 1.55;
+  color: var(--mist);
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 32px;
+  font-size: 13px;
+  color: var(--mist);
+}
+
+.tagline {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+@media (max-width: 760px) {
+  .art {
+    top: auto;
+    bottom: 64px;
+    width: 100%;
+    height: 70vh;
+    height: 70svh;
+  }
+
+  .veil {
+    background: linear-gradient(
+      180deg,
+      var(--navy) 0%,
+      var(--navy) 38%,
+      rgb(14 40 65 / 0.5) 48%,
+      rgb(14 40 65 / 0) 56%
+    );
+  }
+
+  .content {
+    justify-content: flex-start;
+    gap: 24px;
+  }
+
+  .content footer {
+    margin-top: auto;
+  }
+
+  .mid {
+    gap: 18px;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    min-height: calc(50vh - 92px);
+    min-height: calc(50svh - 92px);
+  }
+
+  .logo {
+    font-size: 23px;
+  }
 }
